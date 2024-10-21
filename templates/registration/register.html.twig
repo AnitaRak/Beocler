@@ -3,7 +3,138 @@
 {% block title %}Béocler - Inscription
 {% endblock %}
 
+
 {% block body %}
+	<section class="vh-100">
+		<div class="container py-5 h-100">
+			<form method="post">
+				<div
+					class="row d-flex justify-content-center align-items-center h-100">
+					<!-- Première partie : Informations personnelles -->
+					<div class="col-6" id="part1">
+						<div class="card shadow-2-strong" style="border-radius: 1rem;">
+							<div class="card-body text-center">
+
+								<h3 class="mb-5">Mes informations personnelles</h3>
+								{{ form_start(registrationForm) }}
+
+								<!-- Première ligne de deux colonnes -->
+								<div class="row">
+									<div class="col-md-6">
+										{{ form_row(registrationForm.name) }}
+									</div>
+
+									<div class="col-md-6">
+										{{ form_row(registrationForm.last_name) }}
+									</div>
+								</div>
+
+								<!-- Deuxième ligne de deux colonnes -->
+								<div class="row">
+									<div class="col-md-6">
+
+										{{ form_row(registrationForm.email) }}
+
+									</div>
+									<div class="col-md-6">
+										{{ form_row(registrationForm.status) }}
+									</div>
+								</div>
+
+								<!-- Troisième ligne de deux colonnes -->
+								<div class="row">
+									<div class="col-md-6">
+										{{ form_row(registrationForm.password.first) }}
+									</div>
+									<div class="col-md-6">
+										{{ form_row(registrationForm.password.second) }}
+									</div>
+								</div>
+
+								<!-- Quatrième ligne pour le second champ de mot de passe -->
+								<div class="row">
+									<div class="col-md-12">
+
+										{{ form_row(registrationForm.no_adeli) }}
+
+									</div>
+								</div>
+
+								<!-- Bouton Suivant -->
+								<div class="row mt-4">
+									<div class="col-md-12">
+										<button type="button" class="btn btn-primary" id="nextBtn">Suivant</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Deuxième partie : Coordonées (initialement cachée) -->
+					<div class="col-6 d-none" id="part2">
+						<div class="card shadow-2-strong" style="border-radius: 1rem;">
+							<div class="card-body text-center">
+								<h3 class="mb-5">Mes Coordonées</h3>
+								<div class="row">
+									<div class="col-md-6">
+										{{ form_row(registrationForm.phone) }}
+									</div>
+									<div class="col-md-6">
+										{{ form_row(registrationForm.address) }}
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										{{ form_row(registrationForm.zipcode) }}
+									</div>
+									<div class="col-md-6">
+										{{ form_row(registrationForm.city) }}
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										{{ form_row(registrationForm.RGPDconsent) }}
+									</div>
+								</div>
+
+								<!-- Bouton Précédent pour revenir à la première partie -->
+								<div class="row mt-4">
+									<div class="col-md-6">
+										<button type="button" class="btn btn-secondary" id="prevBtn">Précédent</button>
+									</div>
+									<!-- Bouton Soumettre -->
+									<div class="col-md-6">
+										<button type="submit" class="btn btn-success">Soumettre</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{{ form_end(registrationForm) }}
+
+			</form>
+		</div>
+	</section>
+
+	<!-- Script JavaScript pour gérer l'affichage -->
+	<script>
+		// Afficher la deuxième partie et cacher la première lorsque l'on clique sur "Suivant"
+document.getElementById('nextBtn').addEventListener('click', function () {
+document.getElementById('part1').classList.add('d-none');
+document.getElementById('part2').classList.remove('d-none');
+});
+
+// Afficher la première partie et cacher la deuxième lorsque l'on clique sur "Précédent"
+document.getElementById('prevBtn').addEventListener('click', function () {
+document.getElementById('part2').classList.add('d-none');
+document.getElementById('part1').classList.remove('d-none');
+});
+	</script>
+{% endblock %}
+
+
+{# {% block body %}
 	<section class="main-container my-3">
 		<div class="d-flex justify-content-center align-items-center">
 			<div class="card col-md-4 my-5 shadow mb-3">
@@ -58,4 +189,4 @@
 	</section>
 
 
-{% endblock %}
+{% endblock %} #}

@@ -65,9 +65,20 @@
 											</td>
 											<td>{{ user.getCreateAt ? user.getCreateAt|date('d-m-Y ') : '' }}</td>
 											<td>
-												<form method="post" action="{{ path('admin_users_invalidate', {'userId': user.getId}) }}">
-													<button type="submit" class="btn btn-danger ">Invalider l'inscription</button>
+												<form method="post" action="{{ path('admin_users_invalidate', {'userId': user.getId}) }}" class="d-inline-block">
+
+													<button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Invalider l'inscription">
+														<i class="fas fa-trash-alt"></i>
+													</button>
 												</form>
+
+												{# <form method="post" action="#" class="d-inline-block">
+
+													<button type="submit" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier">
+														<i class="fas fa-edit"></i>
+													</button>
+												</form> #}
+
 											</td>
 										</tr>
 									{% endif %}

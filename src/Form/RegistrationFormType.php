@@ -34,7 +34,7 @@ class RegistrationFormType extends AbstractType
                 ],
                 'label' => 'Numero Adeli',
                 'label_attr' => [
-                    'class' => 'form-label  mt-4'
+                    'class' => 'form-label labellogin'
                 ],
 
             ])
@@ -43,6 +43,9 @@ class RegistrationFormType extends AbstractType
                     'class' => 'form-control'
                 ],
                 'label' => 'Status',
+                'label_attr' => [
+                    'class' => 'labellogin'
+                ],
                 'choices' => [
                     'Étudiant' => 'Etudiant',
                     'Libéral' => 'Liberal',
@@ -52,48 +55,71 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('email', EmailType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control labellogin'
                 ],
-                'label' => 'E-mail'
+                'label' => 'E-mail',
+                'label_attr' => [
+                    'class' => 'labellogin'
+                ]
             ])
 
             ->add('last_name', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control labellogin'
 
                 ],
-                'label' => 'Nom'
+                'label' => 'Nom',
+                'label_attr' => [
+                    'class' => 'labellogin'
+                ]
+
             ])
             ->add('name', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                'label' => 'Prenom'
+                'label' => 'Prenom',
+                'label_attr' => [
+                    'class' => 'labellogin'
+                ]
             ])
             ->add('phone', TelType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                'label' => 'Telephone'
+                'label' => 'Telephone',
+                'label_attr' => [
+                    'class' => 'labellogin'
+                ]
+
             ])
 
             ->add('address', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                'label' => 'Adresse'
+                'label' => 'Adresse',
+                'label_attr' => [
+                    'class' => 'labellogin'
+                ]
             ])
             ->add('zipcode', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                'label' => 'Code postal'
+                'label' => 'Code postal',
+                'label_attr' => [
+                    'class' => 'labellogin'
+                ]
             ])
             ->add('city', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                'label' => 'Ville'
+                'label' => 'Ville',
+                'label_attr' => [
+                    'class' => 'labellogin'
+                ]
             ])
 
 
@@ -104,7 +130,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'You should agree to our terms.',
                     ]),
                 ],
-                'label' => "En m'inscrivant sur ce site J'accepte les termes...",
+                'label' => "En m'inscrivant sur ce site J'accepte les termes.",
             ])
 
             ->add('password', RepeatedType::class, [
@@ -116,8 +142,11 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
 
 
-                'first_options' =>  ['attr' => ['class' => 'form-control'], 'label' => 'Mot de passe'],
-                'second_options' => ['attr' => ['class' => 'form-control'], 'label' => 'Confirmer votre Mot de passe'],
+                'first_options' => ['attr' => ['class' => 'form-control'], 'label' => 'Mot de passe',
+                'label_attr' => ['class' => 'labellogin'],],
+                'second_options' => ['attr' => ['class' => 'form-control'], 'label' => 'Confirmer votre Mot de passe',
+                'label_attr' => ['class' => 'labellogin'],],
+
 
                 'constraints' => [
                     new NotBlank([
