@@ -1,40 +1,62 @@
-<footer class="">
-  <!-- Footer -->
-  	<div class="container">
+ <footer id="footer" class="footer dark-background">
 
-		<hr class="mb-3">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename" >Beocler</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>Adresse</p>
+           
+            <p class="mt-3"><strong>Tel:</strong> <span>...</span></p>
+            <p><strong>Email:</strong> <span>...</span></p>
+          </div>
+         
+        </div>
 
-	<div class="row mb-3 text-center">
-		<div class="col-md-4">
-			<p class="font-weight-bold mb-2"><strong>Liens utiles</strong></p>
-			<ul class="list-unstyled">
-				<li><a href="#">Documentation</a></li>
-			</ul>
-		</div>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Liens utiles</h4>
+          <ul>
+            <li><a href="#"></a></li>   
+          </ul>
+        </div>
 
-		<div class="col-md-4">
-			<p class="font-weight-bold mb-2"><strong>Équipe</strong></p>
-			<ul class="list-unstyled">
-				<li><a href="#">À propos de nous</a></li>
-				<li><a href="#">Blog</a></li>
-			</ul>
-		</div>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Nos services </h4>
+          <ul>
+            <li><a href="#">...</a></li>
+          </ul>
+        </div>
 
-		<div class="col-md-4">
-			<p class="font-weight-bold mb-2"><strong>Ressources</strong></p>
-			<ul class="list-unstyled">
-				<li><a href="#">Politique de confidentialité</a></li>
-			</ul>
-		</div>
-	</div>
+        <div class="col-lg-4 col-md-12 footer-newsletter">
+          <h4>Nous contacter?</h4>
+          <p>...</p>
+          
+        </div>
 
-		<hr class="col-10 mx-auto">
+      </div>
+    </div>
 
-		<div class="row">
-			<div class=" text-center">
-				<p class="text-muted">Béocler © 2023</p>
-			</div>
-		</div>
+    <div class="container copyright text-center mt-4">
+      <p>© <span style="color: #0fb706;">Copyright</span> <strong class="px-1 sitename" >Beocler</strong> <span style="color: #0fb706;">Tous droits reservés</span></p>
+      <div class="credits">
+      </div>
+    </div>
 
-  	</div>
-</footer>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+<!-- Vendor JS Files -->
+
+  <script src="{{ asset('js/bootstrap.bundle.min.js') }}" ></script>
+ 
+  <script src="{{ asset('js/aos.js') }}" ></script>
+  <script src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
+  <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
+
+  <script src="{{ asset('js/main.js')  }}"></script>
