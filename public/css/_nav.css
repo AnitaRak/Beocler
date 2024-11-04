@@ -7,6 +7,22 @@
   padding: 15px 0;
   transition: all 0.5s;
   z-index: 997;
+
+}
+
+/* Style de la barre de navigation */
+.navbar {
+  background: #3EB489;
+  /* background: linear-gradient(
+    to right,
+    #ff5858,
+    #f89757
+  );  */
+  /* Dégradé de couleur rose de gauche à droite */
+  /* border-top: 1px solid #ff5858; /* Bordure supérieure de couleur la plus foncée */
+  /* border-bottom: 1px solid #f857a6; Bordure inférieure de couleur la plus foncée */ 
+  padding: 10px 0; /* Espacement intérieur */
+
 }
 
 .header .logo {

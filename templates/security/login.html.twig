@@ -3,7 +3,62 @@
 {% block title %}Béocler - Connexion
 {% endblock %}
 
+
 {% block body %}
+	<section class="vh-100">
+		<div class="container py-5 h-100">
+			<div class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+					<form method="post">
+						{% if error %}
+							<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+						{% endif %}
+						<div class="card shadow-2-strong" style="border-radius: 1rem;">
+							<div class="card-body p-5 text-center">
+
+								<h3 class="mb-5">Se connecter</h3>
+
+								<label class="form-label labellogin " for="typeEmailX-2">Email</label>
+
+								<div data-mdb-input-init class="form-outline mb-4">
+									<input type="email" name="email" id="inputEmail" value="{{ last_username }}" class="form-control form-control-lg" autocomplete="email" required autofocus/>
+
+								</div>
+
+								<div data-mdb-input-init class="form-outline mb-4 ">
+
+									<label class="form-label labellogin" for="typePasswordX-2">Password</label>
+
+
+									<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+								</div>
+								<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+								<button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+
+								<hr class="my-4">
+
+								<div class="text-center mt-3">
+									<p>Vous n'avez pas encore de compte Béocler ?</p>
+									<a href="{{ path('app_register') }}">Demander la création d'un compte</a>
+								</div>
+
+								<div class="text-center mt-3 mb-3">
+									<a href="{{ path('forgotten_password') }}">Mot de passe oublié ?</a>
+								</div>
+
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
+
+{# {% block body %}
 	<section class="main-container my-3">
 		<div class="d-flex justify-content-center align-items-center">
 			<div class="card col-md-4 my-5 shadow mb-3">
@@ -52,4 +107,4 @@
 			</div>
 		</div>
 	</section>
-{% endblock %}
+{% endblock %} #}
