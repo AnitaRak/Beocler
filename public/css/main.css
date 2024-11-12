@@ -476,3 +476,19 @@ section,
   margin-right: 8px;
   color: #0fb706;
 }
+
+
+
+
+.page-link {
+  color: #0fb706 !important;
+}
+
+.active>.page-link,
+.page-link.active {
+  background-color: #0fb706 !important;
+  border-color: #0fb706 !important;
+  color: #ffffff !important;
+
+}
+
