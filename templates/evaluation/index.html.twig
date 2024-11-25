@@ -5,52 +5,79 @@
 
 {% block body %}
 
-	<div class="container main-container">
-		<div class="card m-3">
-			<div>
-				<h1 class="text-Blue text-center m-3 mb-4">{{test.name}}</h1>
-				<h3 class="text-center">Les consignes pour cette épreuve</h3>
+	<main class="main">
+		<section id="hero" class="hero section dark-background">
+			<div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+				<div class="carousel-item active">
+					<img src="{{ asset('images/3.jpg') }}" alt="">
+					<div class="carousel-container">
+						<h2>Instructions des épreuves<br></h2>
 
-				<div class="row text-center mx-auto justify-content-center mb-4 mt-4">
-					<div class="col-md-4">
-						<div class="card">
-							<h5 class="card-header">Instructions en français</h5>
-							<div class="card-body">
-								<p class="card-text">{{ test.instructionsfr }}</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card">
-							<h5 class="card-header">Instructions en créole</h5>
-							<div class="card-body">
-								<p class="card-text">{{ test.instructionscr }}</p>
-							</div>
-						</div>
+
 					</div>
 				</div>
+			</div>
 
-				<div class="text-center">
-					Vous avez sélectionné :
-					<strong>
-						{{ patient.name }}
-						{{ patient.lastname }}</strong>
-					pour passer cette épreuve.
+		</section>
+	</main>
+
+	<br>
+
+	<div>
+		<div class="container section-title mt-5" data-aos="fade-up">
+			<h2>Consignes</h2>
+
+		</div>
+
+		<div class="text-detail">
+			{{test.name}}
+		</div>
+	</div>
+
+
+	<section id="services" class="services section">
+
+		<div class="container">
+
+			<div class="row gy-4">
+
+				<div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+					<div class="service-item d-flex position-relative h-100">
+						<i class="bi bi-brightness-high icon flex-shrink-0"></i>
+						<div>
+							<h4 class="title" style="color: #0fb706;">Instructions en français</h4>
+							<p class="description">{{test.instructionsfr}}</p>
+						</div>
+					</div>
 				</div>
 
-				<div class="text-center m-3">
+				<div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+					<div class="service-item d-flex position-relative h-100">
+						<i class="bi bi-brightness-high icon flex-shrink-0"></i>
+						<div>
+							<h4 class="title" style="color: #0fb706;">Instructions en créole</h4>
 
-					<a class="btn btn-secondary" href="{{ path('app_evaluation_choix_patient',{'idTest' : idTest }) }}">revenir à la liste des patients</a>
+							<p class="description">{{test.instructionscr}}</p>
 
-					<a class="btn btn-primary" href="{{ path('app_evaluation_run',{ 'idTest': idTest , 'idPatient': patient.id }) }}">Démarrer l'épreuve
-					</a>
 
-					<a class="btn btn-secondary" href="{{ path('test_index')}}">revenir à la liste des épreuves</a>
-
+						</p>
+					</div>
 				</div>
+
+			</div>
+
+			<div class="d-flex justify-content-between align-items-center">
+				<a class="btn btn-secondary" href="{{ path('app_evaluation_choix_patient',{'idTest' : idTest }) }}">Revenir à la liste des patients</a>
+<a class="btn-detail-test" href="{{ path('app_evaluation_run',{ 'idTest': idTest , 'idPatient': patient.id }) }}">Démarrer l'épreuve
+	{{ patient.id}}</a>
+
+
+				<a class="btn btn-secondary" href="{{ path('test_index')}}">Revenir à la liste des épreuves</a>
 			</div>
 
 
 		</div>
-	</div>
+	</section>
+
+
 {% endblock %}
