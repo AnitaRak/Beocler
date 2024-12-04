@@ -105,9 +105,9 @@
 																	</div>
 																{% else %}
 																	{#
-																																																																																														on récupère le nom du score de la réponse courante pour pouvoir cocher la case dans l'input radio plus bas.
-																																																																																														concerne les réponses dans la BDD
-																																																																																														#}
+																	on récupère le nom du score de la réponse courante pour pouvoir cocher la case dans l'input radio plus bas.
+																	concerne les réponses dans la BDD
+																	#}
 																	{% for score in responseCourant.scores %}
 																		{% if score.question.id == question.id %}
 																			{% set valName = score.valuename %}
@@ -139,9 +139,9 @@
 															{% set valName = "" %}
 															<div>
 																{#
-																																																																																															si :le patient viens de démarrer l'évaluation (pas de réponses enregistrées dans la BDD pour cette épreuve) alors 
-																																																																																															sinon
-																																																																																															#}
+																si :le patient viens de démarrer l'évaluation (pas de réponses enregistrées dans la BDD pour cette épreuve) alors 
+																sinon
+																#}
 																{% if responseCourant == null %}
 																	<div class="btn-group m-3">
 																		{% for templatevalue in question.templatequestion.templatevalues %}
@@ -190,8 +190,6 @@
 
 													</div>
 												</div>
-
-												{% set nbQuestion = nbQuestion + 1 %}
 											{% endfor %}
 											<input type="hidden" name="nbQuestion" value="{{ nbQuestion }}">
 											{% set nbQuestion = 0 %}
