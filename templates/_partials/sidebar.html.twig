@@ -1,0 +1,69 @@
+ <!--Variable -->
+		{% set isAdmin = is_granted('ROLE_ADMIN') %}
+		{% set isOtherRole = is_granted('ROLE_USER') or is_granted('ROLE_PATIENT_ADMIN') %}
+
+ <!-- Sidebar -->
+	 {% if app.user %}
+	 {% if isAdmin  %}
+    <div class="sidebar">
+        <ul class="nav flex-column p-3" style="color: #0fb706;">
+			<br>
+			<br>
+            <li class="nav-item" style="border-bottom: 2px solid #0fb706; box-shadow: 6px 6px 25px rgba(0.5, 0.5, 0.5, 0.5);">
+                <a class="nav-link text-black" href="admin/">Dashboard</a>
+            </li>
+			<br>
+            <li class="nav-item">
+                <a class="nav-link text-black" href="{{path('admin_users_listeUsers')}}" style="border-bottom: 2px solid #0fb706; box-shadow: 6px 6px 25px rgba(0.5, 0.5, 0.5, 0.5);">Liste des professionnels</a>
+            </li>
+			<br>
+            <li class="nav-item">
+                <a class="nav-link text-black" href="{{path('admin_users_ModerUsers')}}" style="border-bottom: 2px solid #0fb706; box-shadow: 6px 6px 25px rgba(0.5, 0.5, 0.5, 0.5);">Modération des nouveaux utilisateurs</a>
+            </li>
+			<br>
+            <li class="nav-item">
+                <a class="nav-link text-black" href="{{('/admin/test')}}" style="border-bottom: 2px solid #0fb706; box-shadow: 6px 6px 25px rgba(0.5, 0.5, 0.5, 0.5);">Gestion des épreuves</a>
+            </li>
+        </ul>
+    </div>
+
+	{% endif %}
+
+    <!--Si l'utilisateur connecté n'est pas un admin mais un professionel j'affiche ces menu-->
+				{% if not isAdmin and isOtherRole %}
+
+					{% if app.user and app.user.getIsVerified() and app.user.getInscriptionStatus() == 'valide' %}
+	<div class="sidebar">
+        <ul class="nav flex-column p-3" style="color: #0fb706;">
+			<br>
+			<br>
+            <li class="nav-item" style="border-bottom: 2px solid #0fb706; box-shadow: 6px 6px 25px rgba(0.5, 0.5, 0.5, 0.5);">
+                <a class="nav-link text-black" href="#">Dashboard</a>
+            </li>
+			<br>
+            <li class="nav-item">
+                <a class="nav-link text-black" href="{{ path('test_index')}}" style="border-bottom: 2px solid #0fb706; box-shadow: 6px 6px 25px rgba(0.5, 0.5, 0.5, 0.5);">Liste des épreuves</a>
+            </li>
+			<br>
+            <li class="nav-item">
+                <a class="nav-link text-black" href="{{ path('app_evaluation_evaluations') }}" style="border-bottom: 2px solid #0fb706; box-shadow: 6px 6px 25px rgba(0.5, 0.5, 0.5, 0.5);">Mes évaluations</a>
+            </li>
+			<br>
+            <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="menu2Dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-bottom: 2px solid #0fb706; box-shadow: 6px 6px 25px rgba(0.5, 0.5, 0.5, 0.5);">
+					Gestions des patients
+				</a>
+				<ul class="dropdown-menu" aria-labelledby="menu2Dropdown">
+					<li>
+						<a class="dropdown-item" href="/patient/new">Créer un profil patients</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="/patient">Liste des patients</a>
+					</li>
+				</ul>
+			</li>
+        </ul>
+    </div>
+	{% endif %}
+	{% endif %}
+	{% endif %}

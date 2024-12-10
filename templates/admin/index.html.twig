@@ -5,12 +5,133 @@
 
 
 {% block body %}
-	<div class="main-container">
-		<div class="row">
 
-			<main class="col-9 border border-light bg-wight p-2">
-				<h1>Administration</h1>
-			</main>
+	{% block sidebar %}
+			{% include "_partials/sidebar.html.twig" %}
+	{% endblock %}
+
+	<!-- Main Content -->
+    <div class="content">
+        <div class="container mt-4">
+    		<!-- Section des blocs verts -->
+			<div class="row mb-4">
+				<div class="col-md-3">
+					<div class="card bg-success text-white text-center">
+						<div class="card-body">
+							<h5 class="card-title">Orthophonistes Inscrits</h5>
+							<p class="card-text fs-3">45</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card bg-success text-white text-center">
+						<div class="card-body">
+							<h5 class="card-title">Patients Enregistrés</h5>
+							<p class="card-text fs-3">120</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card bg-success text-white text-center">
+						<div class="card-body">
+							<h5 class="card-title">Evaluations Effectuées</h5>
+							<p class="card-text fs-3">300</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card bg-success text-white text-center">
+						<div class="card-body">
+							<h5 class="card-title">Tests en Attente</h5>
+							<p class="card-text fs-3">15</p>
+						</div>
+					</div>
+				</div>
+			</div>
+							
+
+			<!-- Section des graphes -->
+			<div class="row">
+				<!-- Graphique circulaire -->
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Répartition des Tests</h5>
+							<canvas id="chart1"></canvas>
+						</div>
+					</div>
+				</div>
+				<!-- Graphique en barres -->
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Progression Hebdomadaire</h5>
+							<canvas id="chart2"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 		</div>
-	</div>
+    </div>
+		<!-- footer -->
+		{% block footer %}
+			
+		{% endblock %}
+	<!-- Ajouter Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Configuration du graphique circulaire
+        const ctx1 = document.getElementById('chart1').getContext('2d');
+        new Chart(ctx1, {
+            type: 'doughnut',
+            data: {
+                labels: ['Syntaxe', 'Phonologie', 'Compréhension', 'Production'],
+                datasets: [{
+                    data: [35, 25, 20, 20],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 206, 86, 0.8)',
+                        'rgba(153, 102, 255, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: true }
+                }
+            }
+        });
+
+        // Configuration du graphique en barres
+        const ctx2 = document.getElementById('chart2').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
+                datasets: [{
+                    label: 'Evaluations Complétées',
+                    data: [10, 15, 12, 20, 18, 25, 22],
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: true }
+                }
+            }
+        });
+    </script>
 {% endblock %}

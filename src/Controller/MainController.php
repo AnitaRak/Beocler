@@ -22,7 +22,9 @@ class MainController extends AbstractController
         // Récupérer le nombre d'utilisateurs avec le statut d'inscription "invalide"
         $newUserCount = $em->getRepository(User::class)->count(['inscription_status' => 'invalide']);
 
-        // Passer le nombre d'utilisateurs à modérer au templates/main/index.html.twig
+        // Passer le nombre d'utilisateurs à modérer au templates/main/index.html.twig / 
         return $this->render('main/index.html.twig', ['isAdmin' => true, 'newUserCount' => $newUserCount]);
     }
+
+  
 }

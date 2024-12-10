@@ -24,7 +24,46 @@
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
 		{% endblock %}
+		 <style>
+        
 
+        .sidebar {
+            background-color: #FFFFFF;
+            color: #0fb706;
+            min-width: 250px;
+            max-width: 300px;
+            height: 100vh;
+            position: fixed;
+            top: 56px; /* Adjusted for navbar height */
+            overflow-y: auto;
+			border: 2px solid green;
+			box-shadow: 6px 6px 25px rgba(0.5, 0.5, 0.5, 0.5);
+        }
+
+        .content {
+            margin-top: 56px; /* Adjusted for navbar height */
+            margin-left: 350px; /* Adjusted for sidebar width */
+            padding: 20px;
+            overflow-y: auto;
+            height: calc(100vh - 56px);
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: relative;
+                top: 0;
+                height: auto;
+                min-width: 100%;
+                max-width: 100%;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+        }
+    </style>
+
+      
 
 		<!-- Fichiers JS -->
 
@@ -43,6 +82,7 @@
 		<!-- responsive -->
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	</head>
 
 	<body

@@ -6,41 +6,48 @@
 
 
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
+      <a href="/" class="logo d-flex align-items-center me-auto">
       
         <h1 class="sitename" style="color: #0fb706; font-style: italic; font-family: cursive;"> Beocler</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Accueil</a></li>
-          <li><a href="#about">A propos</a></li>
-          <li><a href="#footer">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+        
+          <li><a href="#" class="active">Accueil</a></li>
+          <li><a href="#about-2">A propos</a></li>
 
-      <div class="dropdown-container">
-      <a class="btn-inscrir" href="#">Espace proffessionnel</a>
-      {% if app.user %}
+          <li><a href="#footer">Contact</a></li>
+
+          <li class="dropdown"><a href=""><button class="btn-inscrir " href="" style="border: 0px">Espace proffessionnel</button></a>
+
+            {% if app.user %}
 						{% if app.user.getIsVerified() and app.user.getInscriptionStatus() == 'valide' %}
-              <ul class="dropdown-menu">
+              <ul >
                 <li><a href="{{ path('users_index') }}">Mon compte</a></li>
                 <li><a href="{{ path('app_logout') }}">Deconnecter</a></li>
               </ul>
             {% else %}
-              <ul class="dropdown-menu">
+              <ul >
                 <li><a href="{{ path('app_logout') }}">Deconnecter</a></li>
               </ul>
             {% endif %}
-      {% else %}
-            <ul class="dropdown-menu">
+          {% else %}
+            <ul>
               <li><a href="/login">Connexion</a></li>
               <li><a href="/register">Inscription</a></li>
             </ul>
-      {% endif %}
+          {% endif %}
+            
+          </li>
 
-      </div>
+          
+          
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+     
 
     </div>
   </header>

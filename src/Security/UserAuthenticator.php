@@ -56,10 +56,12 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
+        // Rediriger vers /admin après connexion réussie
+        return new RedirectResponse('/admin');
 
         // Redirige l'utilisateur vers un page aprés son authentification, 
         //ici il sera redirigé sur la page principale app_main
-        return new RedirectResponse($this->urlGenerator->generate('app_main'));
+        //return new RedirectResponse($this->urlGenerator->generate('app_main'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
