@@ -154,10 +154,15 @@
     padding-right: 0;
   }
 
-  .navmenu li:hover>a,
+  .navmenu li:hover>a {
+    color: var(--nav-hover-color);
+    /* Couleur pour le survol */
+  }
+
   .navmenu .active,
   .navmenu .active:focus {
-    color: var(--nav-hover-color);
+    color: green;
+    /* Couleur verte pour le lien actif */
   }
 
   .navmenu .dropdown ul {

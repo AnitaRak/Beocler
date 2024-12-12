@@ -43,6 +43,16 @@
 							<tbody>
 								{% for evaluation in evaluations %}
 									<tr onclick="window.location='{{ path('app_evaluation_consulter', {'idEval': evaluation.id }) }}'; " style="cursor:pointer;" class="eval-row">
+										<td>Johanna CELINE</td>
+
+										<td>Epreuve de dénomination étendue</td>
+
+										<td>Terminé</td>
+
+										<td>8</td>
+									</tr>
+
+									<tr onclick="window.location='{{ path('app_evaluation_consulter', {'idEval': evaluation.id }) }}'; " style="cursor:pointer;" class="eval-row">
 										<td>{{ evaluation.patient.name ~" "~ evaluation.patient.lastname }}</td>
 										<td>{{ evaluation.test.name }}</td>
 										{% if evaluation.status == "Done" %}
