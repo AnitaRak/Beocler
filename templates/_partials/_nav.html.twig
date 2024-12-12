@@ -2,9 +2,7 @@
 	<div class="container-fluid container-xl position-relative d-flex align-items-center">
 
 		{% set isAdmin = is_granted('ROLE_ADMIN') %}
-		{% set isOtherRole = is_granted('ROLE_USER') %}
-
-		{# {% set isOtherRole = is_granted('ROLE_USER') or is_granted('ROLE_PATIENT_ADMIN') %} #}
+		{% set isOtherRole = is_granted('ROLE_USER') or is_granted('ROLE_PATIENT_ADMIN') %}
 
 
 		<a href="/" class="logo d-flex align-items-center me-auto">
@@ -15,25 +13,33 @@
 
 		<nav id="navmenu" class="navmenu">
 			<ul>
+
 				{% if app.user %}
-					{% if not isAdmin %}
-						<li>
-							<a href="{{ path('test_index')}}" class="{% if '/test/' in app.request.uri %}active{% endif %}">Passez des épreuves</a>
-
-
-						</li>
-						<li>
-							<a href="/patient" class="{% if '/patient/' in app.request.uri %}active{% endif %}">Gestion des patients</a>
-
-
-						</li>
-
-						<li>
-							<a href="{{ path('app_evaluation_evaluations')}}" class="{% if '/evaluation' in app.request.uri %}active{% endif %}">Mes evaluations</a>
-
-
-						</li>
-
+					{% if app.user.getIsVerified() and app.user.getInscriptionStatus() == 'valide' %}
+						<li class="dropdown">
+							<a href="">
+								<button class="btn-inscrir " href="" style="border: 0px">
+									<b>
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewbox="0 0 16 16">
+											<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+										</svg>
+									</b>
+									{{ app.user.getLastName() }}
+									{{ app.user.getName }}</button>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ path('users_index') }}">Mon profil</a>
+								</li>
+								<li>
+									<a href="{{ path('app_logout') }}">Deconnecter</a>
+								</li>
+							</ul>
+						{% else %}
+							<ul>
+								<li><ahref="{{ path('app_logout') }}">Deconnecter</a></li>
+							</ul>
+						{% endif %}
 					{% else %}
 						<li>
 							<a href="#" class="active">Accueil</a>
@@ -46,56 +52,24 @@
 							<a href="#footer">Contact</a>
 						</li>
 
-					{% endif %}
-
-				{% else %}
-
-					<li>
-						<a href="#" class="active">Accueil</a>
-					</li>
-					<li>
-						<a href="#about-2">A propos</a>
-					</li>
-
-					<li>
-						<a href="#footer">Contact</a>
-					</li>
-				{% endif %}
-
-				<li class="dropdown">
-					<a href="">
-						<button class="btn-inscrir " href="" style="border: 0px">Espace proffessionnel</button>
-					</a>
-
-					{% if app.user %}
-						{% if app.user.getIsVerified() and app.user.getInscriptionStatus() == 'valide' %}
+						<li class="dropdown">
+							<a href="">
+								<button class="btn-inscrir " href="" style="border: 0px">Espace personnelle</button>
+							</a>
 							<ul>
-								<li>
-									<a href="{{ path('users_index') }}">Mon compte</a>
-								</li>
-								<li>
-									<a href="{{ path('app_logout') }}">Deconnecter</a>
-								</li>
-							</ul>
-						{% else %}
-							<ul>
-								<li><ahref="{{path('app_logout')}}">Deconnecter</a></li>
+								<li><a href="/login">Connexion</a></li>
+								<li><a href="/register">Inscription</a></li>
 							</ul>
 						{% endif %}
-					{% else %}
-						<ul>
-							<li><a href="/login">Connexion</a></li>
-							<li><a href="/register">Inscription</a></li>
-						</ul>
-					{% endif %}
 
-				</li>
+					</li>
 
 
-			</ul>
-			<i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-		</nav>
+				</ul>
+				<i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+			</nav>
 
 
-	</div>
-</header>
+		</div>
+	</header>
+

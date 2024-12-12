@@ -3,139 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <!-- Bootstrap CSS -->
+    <title>Diagrammes avec JavaScript</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
+        .chart-container {
             display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
         }
-        #sidebar {
-            min-width: 250px;
-            max-width: 250px;
-            height: 100vh;
-            position: fixed;
-            top: 56px;
-            left: 0;
-            background-color: #f8f9fa;
-            padding-top: 1rem;
-            border-right: 1px solid #dee2e6;
+
+        .chart {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            background-color: white;
         }
-        #content {
-            margin-left: 250px;
-            padding: 2rem;
-            flex-grow: 1;
+
+        canvas {
+            display: block;
+            max-width: 100%;
+            height: auto;
         }
-        .widget {
-            background-color: #ffffff;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        @media (max-width: 768px) {
-            #sidebar {
-                position: relative;
-                height: auto;
-                top: 0;
-                width: 100%;
-            }
-            #content {
-                margin-left: 0;
-            }
+
+        h3 {
+            text-align: center;
         }
     </style>
 </head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Ace Admin</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-bell"></i> Notifications</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-user"></i> Welcome, Jason</a>
-                    </li>
-                </ul>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Diagrammes avec Bootstrap et JS</h1>
+        <div class="row chart-container">
+            <!-- Pie Chart -->
+            <div class="col-md-6 chart">
+                <h3>Répartition des Tests</h3>
+                <canvas id="pieChart"></canvas>
             </div>
-        </div>
-    </nav>
 
-    <!-- Sidebar -->
-    <div id="sidebar">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="#"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-cogs"></i> UI & Elements</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-table"></i> Tables</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-edit"></i> Forms</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-calendar"></i> Calendar</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-image"></i> Gallery</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-folder"></i> More Pages</a>
-            </li>
-        </ul>
-    </div>
-
-    <!-- Content -->
-    <div id="content">
-        <h1>Dashboard</h1>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="widget">
-                    <h5><i class="fa fa-comments"></i> Comments</h5>
-                    <p><strong>32</strong> comments + 2 reviews</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="widget">
-                    <h5><i class="fa fa-cart-plus"></i> New Orders</h5>
-                    <p><strong>8</strong> new orders</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="widget">
-                    <h5><i class="fa fa-chart-line"></i> Traffic</h5>
-                    <p><strong>6,251</strong> page views</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="widget">
-                    <h5><i class="fa fa-chart-pie"></i> Traffic Sources</h5>
-                    <p>Pie chart placeholder</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="widget">
-                    <h5><i class="fa fa-tasks"></i> Task Completion</h5>
-                    <p>Task progress placeholder</p>
-                </div>
+            <!-- Bar Chart -->
+            <div class="col-md-6 chart">
+                <h3>Progression Hebdomadaire</h3>
+                <canvas id="barChart"></canvas>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Pie Chart
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Succès', 'Échec', 'En Attente'],
+                datasets: [{
+                    label: 'Répartition des Tests',
+                    data: [40, 30, 30],
+                    backgroundColor: ['#28a745', '#dc3545', '#ffc107'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Bar Chart
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'],
+                datasets: [{
+                    label: 'Progression Hebdomadaire',
+                    data: [30, 50, 70, 90, 100],
+                    backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545', '#6c757d'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

@@ -9,6 +9,9 @@
 	{% block sidebar %}
 			{% include "_partials/sidebar.html.twig" %}
 	{% endblock %}
+
+	<!-- Main Content -->
+    <div class="content">
 	<div class="container main-container">
 		<div class="row justify-content-center align-items-center">
 			<div class="m-3 card w-100">
@@ -92,6 +95,9 @@
 			</ul>
 		</div>
 	</div>
-
-
+	</div>
+<!-- footer -->
+		{% block footer %}
+			
+		{% endblock %}
 {% endblock %}
