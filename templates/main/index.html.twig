@@ -94,54 +94,55 @@
 
 
 		{# <div class="card main-container mx-auto m-4">
-										{# FIXME : This should be handled in a controller 
-										{% set isAdmin = is_granted('ROLE_ADMIN') %}
-										{% if isAdmin  %}
-				
-											<div class="alert alert-info">
-				
-				
-												<h1>Vous avez
-													<a href="{{ path('admin_users_ModerUsers') }}">
-														<span class="text-danger">{{ newUserCount }}</span>
-													</a>
-													nouveau utilisateur(s) à moderer
-												</h1>
-				
-				
-											</div>
-				
-										{% else   %}
-				
-											{% if app.user and app.user.getIsVerified() and app.user.getInscriptionStatus() == 'valide' %}
-												<p>Nous proposons les fonctionnalités suivantes :</p>
-												<div class="row mt-3">
-													<div class="col-md-4">
-														<h3>Passez des épreuves</h3>
-														<p>Consultez la liste des épreuves disponibles.</p>
-														<a class="btn btn-primary " href="{{ path('test_index')}}">Accéder à la liste</a>
+												{# FIXME : This should be handled in a controller 
+												{% set isAdmin = is_granted('ROLE_ADMIN') %}
+												{% if isAdmin  %}
+						
+													<div class="alert alert-info">
+						
+						
+														<h1>Vous avez
+															<a href="{{ path('admin_users_ModerUsers') }}">
+																<span class="text-danger">{{ newUserCount }}</span>
+															</a>
+															nouveau utilisateur(s) à moderer
+														</h1>
+						
+						
 													</div>
-													<div class="col-md-4">
-														<h3>Mes évaluations</h3>
-														<p>Consultez vos évaluations personnelles.</p>
-														<a class="btn btn-primary" href="{{ path('app_evaluation_evaluations') }}">Accéder à mes évaluations</a>
-													</div>
-													<div class="col-md-4">
-														<h3>Gestion des patients</h3>
-														<p>Gérez les informations relatives aux patients.</p>
-														<a class="btn btn-primary mb-3" href="/patient">Accéder à la liste de vos patients</a>
-													</div>
-												</div>
-											{% endif %}
-									
-				          	{% endif %}
-				
-									</hr>
-								</div>
-							</div> #}
+						
+												{% else   %}
+						
+													{% if app.user and app.user.getIsVerified() and app.user.getInscriptionStatus() == 'valide' %}
+														<p>Nous proposons les fonctionnalités suivantes :</p>
+														<div class="row mt-3">
+															<div class="col-md-4">
+																<h3>Passez des épreuves</h3>
+																<p>Consultez la liste des épreuves disponibles.</p>
+																<a class="btn btn-primary " href="{{ path('test_index')}}">Accéder à la liste</a>
+															</div>
+															<div class="col-md-4">
+																<h3>Mes évaluations</h3>
+																<p>Consultez vos évaluations personnelles.</p>
+																<a class="btn btn-primary" href="{{ path('app_evaluation_evaluations') }}">Accéder à mes évaluations</a>
+															</div>
+															<div class="col-md-4">
+																<h3>Gestion des patients</h3>
+																<p>Gérez les informations relatives aux patients.</p>
+																<a class="btn btn-primary mb-3" href="/patient">Accéder à la liste de vos patients</a>
+															</div>
+														</div>
+													{% endif %}
+											
+						          	{% endif %}
+						
+											</hr>
+										</div>
+									</div> #}
 	{% else %}
 		{# Si l'utilisateur n'est pas connecter (Index page d'acceuil de présentation BEOCLER) :NO LOG #}
-		<main class="main">
+		<main
+			class="main">
 			<!-- Hero Section -->
 			<section id="hero" class="hero section dark-background">
 				<div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
@@ -182,7 +183,9 @@
 				</div>
 			</section>
 
-			<section id="about-2" class="about-2 section"> <!-- Section Title -->
+			<section
+				id="about-2" class="about-2 section">
+				<!-- Section Title -->
 				<div class="container section-title" data-aos="fade-up">
 					<h2>A PROPOS</h2>
 				</div>
@@ -192,7 +195,8 @@
 
 					<div class="row gy-4">
 
-						<div class="col-lg-5 content" data-aos="fade-up" data-aos-delay="100">
+						<div class="col-lg-5 content" data-aos="fade-up" data-aos-delay="100" style="margin-left: 0;">
+
 							<div class="about-img">
 
 								<img src="{{ asset('images/Audrey2.png') }}" class="img-fluid" alt="">
@@ -253,8 +257,8 @@
 									</ul>
 									<p>
 										Cette batterie a été conçue pour intervenir auprès de personnes de tous âges, dès lors que la communication est entravée. L'évaluation, qui s'appuie sur le concept de norme, est une étape fondamentale.
-																				                Dans le cadre d'un des axes de recherche du pôle linguistique du laboratoire LCF, une réflexion sur les approches évaluatives et diagnostiques des troubles du langage en contexte plurilingue a été amorcée.
-																				                Ce travail répondait à une demande forte du terrain, compte tenu de l'absence d'outils adaptés au contexte linguistique réunionnais.
+																														                Dans le cadre d'un des axes de recherche du pôle linguistique du laboratoire LCF, une réflexion sur les approches évaluatives et diagnostiques des troubles du langage en contexte plurilingue a été amorcée.
+																														                Ce travail répondait à une demande forte du terrain, compte tenu de l'absence d'outils adaptés au contexte linguistique réunionnais.
 									</p>
 								</div>
 
@@ -277,9 +281,9 @@
 										</li>
 									</ul>
 									<p>Les orthophonistes exerçant à La Réunion sont confrontés à de multiples difficultés lors de l'évaluation langagière : outils et normes inadaptés, connaissances limitées du terrain réunionnais. Le BÉOCLER® vise à répondre à ces défis en fournissant un outil adapté au contexte local.
-																				              Ce plateforme est à la mise à disposition des outils 
-																				              existants pour les professionnels de santé ciblés, en particulier les orthophonistes. Cet outil est destiné à l’évaluation, la rééducation et la gestion administrative.
-																				              Il fournit donc une ressource précieuse et facilement accessible pour les professionnels de santé dans leur pratique quotidienne.
+																														              Ce plateforme est à la mise à disposition des outils 
+																														              existants pour les professionnels de santé ciblés, en particulier les orthophonistes. Cet outil est destiné à l’évaluation, la rééducation et la gestion administrative.
+																														              Il fournit donc une ressource précieuse et facilement accessible pour les professionnels de santé dans leur pratique quotidienne.
 									</p>
 								</div>
 								<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
@@ -301,7 +305,7 @@
 										</li>
 									</ul>
 									<p>Cette batterie est contextualisée culturellement et linguistiquement pour répondre aux besoins spécifiques des enfants réunionnais en proposant des test adaptés à ces derniers. Elle a été conçue pour intervenir auprès de personnes de tous âges, dès lors que la communication est entravée. 
-																				              L'évaluation, qui s'appuie sur le concept de norme, est une étape fondamentale.</p>
+																														              L'évaluation, qui s'appuie sur le concept de norme, est une étape fondamentale.</p>
 								</div>
 							</div>
 							<!-- Tab Content -->
