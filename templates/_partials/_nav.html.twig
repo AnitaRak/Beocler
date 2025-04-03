@@ -16,6 +16,21 @@
 
 				{% if app.user %}
 					{% if app.user.getIsVerified() and app.user.getInscriptionStatus() == 'valide' %}
+						{% if not isAdmin and isOtherRole %}
+							<li>
+								<a href="{{ path('test_index')}}" class="{{ app.request.getPathInfo() == '/test/' ? 'active' : '' }}">
+									Passez des épreuves</a>
+							</li>
+							<li>
+								<a href="{{ path('app_evaluation_evaluations')}}" class="{{ app.request.getPathInfo() == '/evaluation' ? 'active' : '' }}">Mes évaluations</a>
+							</li>
+
+							<li>
+								<a href="/patient" class="{{ app.request.getPathInfo() == '/patient/' ? 'active' : '' }}">Gestion des patients</a>
+							</li>
+
+						{% endif %}
+
 						<li class="dropdown">
 							<a href="">
 								<button class="btn-inscrir " href="" style="border: 0px">
@@ -25,9 +40,14 @@
 										</svg>
 									</b>
 									{{ app.user.getLastName() }}
-									{{ app.user.getName }}</button>
+
+									{{ app.user.getName }}
+								</button>
+
 							</a>
 							<ul>
+
+
 								<li>
 									<a href="{{ path('users_index') }}">Mon profil</a>
 								</li>
@@ -37,7 +57,7 @@
 							</ul>
 						{% else %}
 							<ul>
-								<li><ahref="{{ path('app_logout') }}">Deconnecter</a></li>
+								<li><ahref="{{path('app_logout')}}">Deconnecter</a></li>
 							</ul>
 						{% endif %}
 					{% else %}
@@ -54,7 +74,7 @@
 
 						<li class="dropdown">
 							<a href="">
-								<button class="btn-inscrir " href="" style="border: 0px">Espace personnelle</button>
+								<button class="btn-inscrir " href="" style="border: 0px">Espace personnel</button>
 							</a>
 							<ul>
 								<li><a href="/login">Connexion</a></li>
@@ -72,4 +92,3 @@
 
 		</div>
 	</header>
-

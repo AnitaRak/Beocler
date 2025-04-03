@@ -41,28 +41,41 @@
 								</tr>
 							</thead>
 							<tbody>
-								{% for evaluation in evaluations %}
-									<tr onclick="window.location='{{ path('app_evaluation_consulter', {'idEval': evaluation.id }) }}'; " style="cursor:pointer;" class="eval-row">
-										<td>Johanna CELINE</td>
+								<tr style="cursor:pointer;" class="eval-row">
+									<td>Johanna CELINE</td>
 
-										<td>Epreuve de dénomination étendue</td>
+									<td>Epreuve de dénomination étendue</td>
 
-										<td>Terminé</td>
+									<td>Terminé</td>
 
-										<td>8</td>
-									</tr>
+									<td>8</td>
+								</tr>
 
-									<tr onclick="window.location='{{ path('app_evaluation_consulter', {'idEval': evaluation.id }) }}'; " style="cursor:pointer;" class="eval-row">
-										<td>{{ evaluation.patient.name ~" "~ evaluation.patient.lastname }}</td>
-										<td>{{ evaluation.test.name }}</td>
-										{% if evaluation.status == "Done" %}
-											<td>Terminé</td>
-										{% else %}
-											<td>En cours</td>
-										{% endif %}
-										<td>{{ evaluation.score }}</td>
-									</tr>
-								{% endfor %}
+								<tr style="cursor:pointer;" class="eval-row">
+									<td>SANTATRA RAKOTO</td>
+
+									<td>Épreuve de répétition de mots complexes</td>
+
+
+									<td>En cours</td>
+
+									<td></td>
+								</tr>
+
+
+								{# {% for evaluation in evaluations %}
+								
+																	<tr onclick="window.location='{{ path('app_evaluation_consulter', {'idEval': evaluation.id }) }}'; " style="cursor:pointer;" class="eval-row">
+																		<td>{{ evaluation.patient.name ~" "~ evaluation.patient.lastname }}</td>
+																		<td>{{ evaluation.test.name }}</td>
+																		{% if evaluation.status == "Done" %}
+																			<td>Terminé</td>
+																		{% else %}
+																			<td>En cours</td>
+																		{% endif %}
+																		<td>{{ evaluation.score }}</td>
+																	</tr>
+																{% endfor %} #}
 							</tbody>
 						</table>
 					{% endif %}
