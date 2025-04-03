@@ -1,101 +1,149 @@
 {% block body %}
-	<h3 class="title mt-4" > Consignes </h3>
-	<section class="card d-flex align-items-center justify-content-center m-4">
-			
-			
-			<div class="row d-flex align-items-center justify-content-center mt-3">
-				
-				<div class="col-5">
-					<div class="card h-100">
-						<h3 class="card-header">Consigne en français</h3>
-						<div class="card-body">
-							<p>{{test.instructionsfr}}</p>
+	<br>
+	<div class="container section-title mt-5" data-aos="fade-up">
+		<h2>Consignes</h2>
+	</div>
+	<!-- End Section Title -->
+
+
+	<section id="services" class="services section">
+
+		<div class="container">
+
+			<div class="row gy-4">
+
+				<div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+					<div class="service-item d-flex position-relative h-100">
+						<i class="bi bi-brightness-high icon flex-shrink-0"></i>
+						<div>
+							<h4 class="title" style="color: #0fb706;">Consigne en français</h4>
+							<p class="description">{{test.instructionsfr}}</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-5">
-					<div class="card h-100">
-						<h3 class="card-header">Consigne en créole</h3>
-						<div class="card-body">
-							<p>{{test.instructionscr}}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col col-sm-10 text-center mt-3 mb-3">
-				<div class="card h-100">
-					<h3 class="card-header">Précisions sur le déroulement</h3>
-					<div class="card-body">
-						<p>{{test.implementationadvice}}</p>
-						{% if test.isTimed == false %}
-							<p>Items non chronométrés</p>
-						{% elseif test.isTimed == true %}
-							<p>Items chronométrés</p>
-						{% endif %}
+
+				<div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+					<div class="service-item d-flex position-relative h-100">
+						<i class="bi bi-brightness-high icon flex-shrink-0"></i>
+						<div>
+							<h4 class="title" style="color: #0fb706;">Consigne en créole</h4>
+
+							<p class="description">{{test.instructionscr}}</p>
+
+
 						</p>
 					</div>
 				</div>
-			</div>
-	</section>
 
-	<aside class="row mt-5 ">
-		<h2 class="title">Questions associées à chaque item</h2>
-		{% if test.templateQuestions.count() > 0%}
-			{% if test.templateQuestions.count() > 1%}
-				<p>
-					<strong>{{test.templateQuestions.count()}}
-						questions sont posées pour chaque item de cette épreuve.</strong>
-				</p>
-			{% else %}
-				<p>
-					<strong>{{test.templateQuestions.count()}}
-						question est posée pour chaque item de cette épreuve.</strong>
-				</p>
-			{% endif %}
-			{% for templateQuestion in test.templateQuestions %}
-			<div class="d-flex align-items-center justify-content-center mt-3">
-				<div class="card h-100 col-6">
-					<h3 class="card-header">{{templateQuestion.instructionsFr}}</h3>
-					<div class="card-body">
-						<p>Cette question
-							{% if templateQuestion.isIncludedInTotalScore %}
-								est prise en compte
-							{% else %}
-								n'est pas prise en compte
+			</div>
+
+			<div class="row gy-4">
+
+				<div class="col-md-12" data-aos="fade-up" data-aos-delay="500">
+					<div class="service-item d-flex position-relative h-100">
+						<i class="bi bi-brightness-high icon flex-shrink-0"></i>
+						<div>
+							<h4 class="title" style="color: #0fb706;">Précisions sur le déroulement</h4>
+
+							<p class="description">{{test.implementationadvice}}</p>
+							{% if test.isTimed == false %}
+								<p>Items non chronométrés</p>
+							{% elseif test.isTimed == true %}
+								<p>Items chronométrés</p>
 							{% endif %}
-							dans le calcul du score total de l'épreuve.</p>
-						{% if templateQuestion.isMCQ == true %}
-							<p>Liste des valeurs :</p>
-							<table class="table table-bordered table-striped text-center align-middle">
-								<thead>
-									<tr>
-										<th scope="col">Valeur</th>
-										<th scope="col">Détail de la valeur</th>
-										<th scope="col">Score associé</th>
-									</tr>
-								</thead>
-								<tbody>
-									{% for option in templateQuestion.templateValues %}
-										<tr>
-											<th>{{option.name | capitalize}}</th>
-											<th>{{option.completeName | capitalize}}</th>
-											<th>{{option.score | capitalize}}</th>
-										</tr>
-									{% endfor %}
-								</tbody>
-							</table>
-						{% elseif templateQuestion.requiresText == true %}
-							<p>Demande la saisie d'un texte</p>
-						{% elseif templateQuestion.requiresAudio == true %}
-							<p>Enregistrement d'un son audio</p>
-						{% endif %}
+
+
+						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+
+	</section>
+
+
+	<br>
+	<div>
+		<div class="container section-title mt-5" data-aos="fade-up">
+			<h2>Questions associées à chaque item</h2>
+		</div>
+
+		<div class="text-detail">
+
+			{% if test.templateQuestions.count() > 0%}
+				{% if test.templateQuestions.count() > 1%}
+					<p>
+						<strong>{{test.templateQuestions.count()}}</strong>
+
+						questions sont posées pour chaque item de cette épreuve.
+					</p>
+				{% else %}
+					<p>
+
+						<strong>{{test.templateQuestions.count()}}</strong>
+
+						question est posée pour chaque item de cette épreuve.
+					</p>
+				{% endif %}
+
+			{% endif %}
+		</div>
+
+	</div>
+
+	<section>
+
+
+		{% if test.templateQuestions.count() > 0%}
+			
+			{% for templateQuestion in test.templateQuestions %}
+				<div class="d-flex align-items-center justify-content-center mt-3">
+					<div class="card h-100 col-6">
+						<h3 class="card-header">{{templateQuestion.instructionsFr}}</h3>
+						<div class="card-body">
+							<p>Cette question
+								{% if templateQuestion.isIncludedInTotalScore %}
+									est prise en compte
+								{% else %}
+									n'est pas prise en compte
+								{% endif %}
+								dans le calcul du score total de l'épreuve.</p>
+							{% if templateQuestion.isMCQ == true %}
+								<p>Liste des valeurs :</p>
+								<table class="table table-bordered table-striped text-center align-middle">
+									<thead>
+										<tr>
+											<th scope="col">Valeur</th>
+											<th scope="col">Détail de la valeur</th>
+											<th scope="col">Score associé</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for option in templateQuestion.templateValues %}
+											<tr>
+												<th>{{option.name | capitalize}}</th>
+												<th>{{option.completeName | capitalize}}</th>
+												<th>{{option.score | capitalize}}</th>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							{% elseif templateQuestion.requiresText == true %}
+								<p>Demande la saisie d'un texte</p>
+							{% elseif templateQuestion.requiresAudio == true %}
+								<p>Enregistrement d'un son audio</p>
+							{% endif %}
+						</div>
+					</div>
+				</div>
 			{% endfor %}
+
+
 		{% elseif test.templateQuestions.count() == 0 %}
 			<p>Aucune question n'est associée aux items présentés dans ce test</p>
-		{% endif %}
-	</aside>
 
-{% endblock %}
+		{% endif %}
+
+
+	</div>
+</section>{% endblock %}

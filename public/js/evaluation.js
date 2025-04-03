@@ -100,6 +100,7 @@ function AjaxReq() {
     */
     let formData = new FormData(document.getElementById('form' + sequence));
     let nbQuestion = $("input[name='nbQuestion']").val();
+    
     let itemId = $("#submit" + sequence).data('item');
     for (let i = 0; i < nbQuestion; i++) {
         let question = $('#form' + sequence + " input[name='question" + i + "']").val();

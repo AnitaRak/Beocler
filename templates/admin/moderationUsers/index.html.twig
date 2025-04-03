@@ -4,4 +4,14 @@
 	Espace Admin Users
 {% endblock %}
 
-{%  block body %}{% endblock %}
+{%  block body %}
+
+{% block sidebar %}
+			{% include "_partials/sidebar.html.twig" %}
+	{% endblock %}
+
+<!-- footer -->
+		{% block footer %}
+			
+		{% endblock %}
+{% endblock %}

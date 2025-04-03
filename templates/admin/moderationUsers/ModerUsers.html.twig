@@ -5,6 +5,12 @@
 {% endblock %}
 
 {% block body %}
+
+	{% block sidebar %}
+			{% include "_partials/sidebar.html.twig" %}
+	{% endblock %} 
+	<!-- Main Content -->
+    <div class="content">
 	<div class="container main-container">
 		<div class="row justify-content-center align-items-center">
 
@@ -91,4 +97,10 @@
 			</ul>
 		</div>
 	</div>
+	</div>
+
+	<!-- footer -->
+		{% block footer %}
+			
+		{% endblock %}
 {% endblock %}

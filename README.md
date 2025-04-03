@@ -29,7 +29,7 @@ To send and receive emails from the project, you need to install a mail server o
 Next, you need to clone the projet repository from github using the following command:
 
 ```bash
-git clone https://github.com/Alextmh/beocler.git
+git clone https://github.com/AnitaRak/Beocler.git
 ```
 This will create a folder named beocler in your current directory.
 1) Then enter into the projet
@@ -80,9 +80,3 @@ symfony server:start -d
 
 That’s it! You have successfully set up and run the project.
 
-# Authors
-
-- [Pauline Moncoiffé-Brisset](https://github.com/paulinebrisset)
-- [Beriche Chahalane](https://github.com/Beriche)
-- [Julien Lenormand](https://github.com/Synepsy)
-- [Alexandre Tam-Hui](https://github.com/Alextmh)

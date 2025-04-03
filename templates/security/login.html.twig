@@ -13,7 +13,7 @@
 						{% if error %}
 							<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 						{% endif %}
-						<div class="card shadow-2-strong" style="border-radius: 1rem;">
+						<div class="card shadow-2-strong" style="border-radius: 1rem;  box-shadow: 6px 6px 25px rgba(0.5, 0.5, 0.5, 0.5);">
 							<div class="card-body p-5 text-center">
 
 								<h3 class="mb-5">Se connecter</h3>
@@ -27,7 +27,7 @@
 
 								<div data-mdb-input-init class="form-outline mb-4 ">
 
-									<label class="form-label labellogin" for="typePasswordX-2">Password</label>
+									<label class="form-label labellogin" for="typePasswordX-2">Mot de passe</label>
 
 
 									<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
@@ -35,7 +35,7 @@
 								</div>
 								<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-								<button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+								<button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block" type="submit">Connexion</button>
 
 								<hr class="my-4">
 

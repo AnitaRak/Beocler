@@ -492,3 +492,29 @@ section,
 
 }
 
+.shadow-2-strong{
+  border-radius: 1rem;  box-shadow: 6px 6px 25px rgba(0.5, 0.5, 0.5, 0.5);
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 56px;
+  left: 0;
+  background-color: #f8f9fa;
+  padding-top: 1rem;
+  border-right: 1px solid #dee2e6;
+}
+
+
+@media (max-width: 768px) {
+  #sidebar {
+      position: relative;
+      height: auto;
+      top: 0;
+      width: 100%;
+  }
+
+}
